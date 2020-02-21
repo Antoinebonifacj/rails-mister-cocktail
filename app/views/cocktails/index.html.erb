@@ -7,25 +7,23 @@
   </div>
 </div>
 <h1 class="display-2">My list of Cocktails</h1>
-<ul>
-<% @cocktails.each do |cocktail| %>
-<%= link_to cocktail.name, cocktail_path(cocktail) %>
-<% end %>
-</ul>
-
-<div class="card-product">
-  <div class="card-product-infos">
+  <% @cocktails.each do |cocktail| %>
+  <div class="card-product">
     <img src="https://images.unsplash.com/photo-1551538827-9c037cb4f32a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=701&q=80" />
-    <% @cocktails.each do |cocktail| %>
-    <h2><%= link_to cocktail.name, cocktail_path(cocktail) %></h2>
-    <% end %>
-    <p>Product description with <strong>relevant info</strong> only.</p>
+      <div class="card-product-infos">
+
+      <h2><%= link_to cocktail.name, cocktail_path(cocktail) %></h2>
+
+    </div>
   </div>
-</div>
+  <% end %>
+
+
 
 
 
 <p><%= link_to "Add New Cocktail", new_cocktail_path %></p>
+
 
 
 

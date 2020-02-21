@@ -5,7 +5,9 @@ class CocktailsController < ApplicationController
 
   def show
     @cocktail = Cocktail.find(params[:id])
-    @doses = Dose.all
+
+
+
     # redirect_to cocktail_path(@cocktail)
   end
 

@@ -4,9 +4,10 @@
 
 
 <ul>
-  <% @doses.each do |dose| %>
+  <% @cocktail.doses.each do |dose| %>
   <li>
   <%= dose.description%> de <%= dose.ingredient.name %>
+  <p><%= link_to "Delete a dose", dose_path(dose.id), method: :delete %></p>
   </li>
 <% end %>
 </ul>

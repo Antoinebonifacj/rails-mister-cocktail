@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   # Cocktails routes
   resources :cocktails, only: %i[index show new create destroy] do
-    resources :doses, only: %i[new create destroy]
+    resources :doses, only: %i[new create]
   end
+  resources :doses, only: [:destroy]
 end
