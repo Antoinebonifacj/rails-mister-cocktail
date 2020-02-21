@@ -3,26 +3,31 @@
   <div class="container">
     <h1>Mister Cocktail</h1>
     <p>Change your life and learn some cocktails to do on your own.</p>
-    <a href=<%= new_cocktail_path%>>Add New Cocktail</a>
   </div>
 </div>
-<h1 class="display-2">My list of Cocktails</h1>
-  <% @cocktails.each do |cocktail| %>
-  <div class="card-product">
-    <img src="https://images.unsplash.com/photo-1551538827-9c037cb4f32a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=701&q=80" />
-      <div class="card-product-infos">
 
-      <h2><%= link_to cocktail.name, cocktail_path(cocktail) %></h2>
 
+  <h1 class="title-list">My Cocktails</h1>
+
+  <div class="d-flex justify-content-around">
+    <% @cocktails.each do |cocktail| %>
+    <div class="card-product">
+      <img src="https://images.unsplash.com/photo-1551538827-9c037cb4f32a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=701&q=80" />
+        <div class="card-product-infos">
+
+        <h2><%= link_to cocktail.name, cocktail_path(cocktail) %></h2>
+
+      </div>
     </div>
+    <% end %>
   </div>
-  <% end %>
 
 
+<div class="d-flex justify-content-around">
+  <a class="btn btn-primary btn-lg" href="<%= new_cocktail_path %>" role="button">Add New Cocktail</a>
+</div>
 
 
-
-<p><%= link_to "Add New Cocktail", new_cocktail_path %></p>
 
 
 
