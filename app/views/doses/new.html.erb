@@ -1,0 +1,13 @@
+<h1>Doses#new</h1>
+<p>Find me in app/views/doses/new.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <%= simple_form_for [@cocktail, @dose] do |f| %>
+        <%= f.input :description %>
+        <%= f.input :ingredient_id, collection: Ingredient.all %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+  </div>
+</div>
