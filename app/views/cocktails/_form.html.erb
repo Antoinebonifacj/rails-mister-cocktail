@@ -2,9 +2,9 @@
   <div class="row">
     <div class="col-6">
       <%= simple_form_for(@cocktail) do |f| %>
-        <%= f.input :name %>
-        <%= f.input :description %>
-        <%= f.input :prep_time %>
+        <%= f.input :name, label: 'Name of the Cocktail' %>
+        <%= f.input :description, label: 'Description (max 150 char)' %>
+        <%= f.input :prep_time, label: 'Préparation time (minutes)' %>
         <%= f.input :photo, as: :file %>
         <%= f.submit %>
       <% end %>

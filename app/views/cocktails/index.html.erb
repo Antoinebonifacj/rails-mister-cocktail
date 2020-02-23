@@ -1,10 +1,9 @@
-<div class="banner">
-  <div class="container d-flex">
-    <div class="d-flex"><p class="maj">T</p><span class="min d-flex align-self-end">hanks</span></div>
-    <div class="d-flex"><p class="maj">G</p><span class="min d-flex align-self-end">od </span></div>
-    <div class="d-flex"><p class="maj"> I</p><span class="min d-flex align-self-end">t's</span></div>
-    <div class="d-flex"><p class="maj">F</p><span class="min d-flex align-self-end">riday!</span></div>
-    <p></p>
+<div class="banner d-flex justify-content-start">
+  <div class="container">
+      <h1>TGIF</h1>
+      <p>Thanks God It's Friday</p>
+      <p>Create your own collection of cocktails!</p>
+      <a class="btn btn-ghost" href="<%= new_cocktail_path %>">Add your cocktail!</a>
   </div>
 </div>
 
@@ -12,13 +11,14 @@
 
   <h1 class="title-list">My Cocktails</h1>
 
-  <div class="d-flex justify-content-start">
+  <div class="d-flex justify-content-start" style="
+    margin-left: 4rem;">
     <% @cocktails.each do |cocktail| %>
     <div class="card-product">
       <img src="https://images.unsplash.com/photo-1551538827-9c037cb4f32a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=701&q=80" />
         <div class="card-product-infos">
 
-        <h2><%= link_to cocktail.name, cocktail_path(cocktail) %></h2>
+        <h2><%= link_to cocktail.name, cocktail_path(cocktail), :style => "text-decoration: none;" %></h2>
           <h3>Description : </h3>
             <p><%= cocktail.description %></p>
           <h3>Preparation time : </h3>
@@ -28,13 +28,13 @@
     <% end %>
   </div>
             <div class="d-flex justify-content-around">
-              <a class="btn btn-primary btn-lg" href="<%= new_cocktail_path %>" role="button">Add New Cocktail</a>
+              <a class="btn btn-ghost" href="<%= new_cocktail_path %>" role="button">Add New Cocktail</a>
             </div>
 
 <br>
 
 <div class="d-flex justify-content-around">
-  <a class="btn btn-primary btn-lg" href="<%= new_cocktail_path %>" role="button">Add New Cocktail</a>
+  <a class="btn btn-ghost" href="<%= new_cocktail_path %>" role="button">Add New Cocktail</a>
 </div>
 <div class="footer fixed-bottom">
   <div class="footer-links">
