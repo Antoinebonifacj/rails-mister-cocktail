@@ -11,8 +11,39 @@ require 'open-uri'
 url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list'
 drinks = JSON.load(open(url))
 ingredients = drinks['drinks']
+mint = { "strIngredient1" => "Mint" }
+ingredients << mint
+ing = []
 ingredients.each do |ingredient|
-  Ingredient.create(name: ingredient['strIngredient1'])
+  ing << ingredient.to_a.reduce
 end
+ing.sort!
+ing.each do |i|
+  Ingredient.create(name: i[1])
+end
+
+
+
+
+
+
+
+    # Ingredient.create(name: igs['strIngredient1'])
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ingredients.each do |ingredient|
+#   Ingredient.create(name: ingredient['strIngredient1'])
+# end
 
 

@@ -3,6 +3,8 @@
     <div class="col-6">
       <%= simple_form_for(@cocktail) do |f| %>
         <%= f.input :name %>
+        <%= f.input :description %>
+        <%= f.input :prep_time %>
         <%= f.input :photo, as: :file %>
         <%= f.submit %>
       <% end %>

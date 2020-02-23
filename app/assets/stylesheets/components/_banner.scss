@@ -1,20 +1,38 @@
+
+
 .banner {
-  background-size: cover;
-  background-position: center;
-  padding: 50px 0;
+  background-attachment: fixed;
 }
 
-.banner h1 {
+.banner .description {
+  margin-top: 10rem;
+  margin-left: -21rem;
+}
+
+.banner .maj {
   margin: 0;
-  color: white;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  font-size: 32px;
-  font-weight: bold;
+  padding-top: 10px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  font-size: 8rem;
+  font-weight: lighter;
+  letter-spacing: 4px;
+  font-family: pacifico;
+  color: #3C3C3C;
 }
-
+.banner .min {
+  margin: 0;
+  margin-bottom: 3rem;
+  margin-left: -0.7rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  font-size: 1rem;
+  font-weight: lighter;
+  font-family: pacifico;
+  color: #3C3C3C;
+  opacity: 0.4;
+}
 .banner p {
   font-size: 20px;
-  color: white;
+  color: #3c3c3c;
   opacity: .7;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
