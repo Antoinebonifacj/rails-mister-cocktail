@@ -20,7 +20,7 @@
 
         <ul>
           <p class="card-text">
-              <%= cl_image_tag @article.photo.key, height: 300, width: 400, crop: :fill %>
+              <%= cl_image_tag @cocktail.photo.key, height: 300, width: 400, crop: :fill %>
               <% @cocktail.doses.each do |dose| %>
               <div>
                 <li class="d-flex justify-content-between"style="width: 24rem;"><%= dose.description%> of <%= dose.ingredient.name %><%= link_to "🗑️",dose_path(dose.id), method: :delete %></li>
