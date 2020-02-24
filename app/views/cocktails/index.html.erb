@@ -15,9 +15,9 @@
     margin-left: 4rem;">
     <% @cocktails.each do |cocktail| %>
     <div class="card-product">
-      <img src="https://images.unsplash.com/photo-1551538827-9c037cb4f32a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=701&q=80" />
         <div class="card-product-infos">
 
+        <%= cl_image_tag @cocktail.photo.key, crop: :fill %>
         <h2><%= link_to cocktail.name, cocktail_path(cocktail), :style => "text-decoration: none;" %></h2>
           <h3>Description : </h3>
             <p><%= cocktail.description %></p>
