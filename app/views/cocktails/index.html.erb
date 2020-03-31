@@ -3,11 +3,8 @@
       <h1>TGIF</h1>
       <p>Thanks God It's Friday</p>
       <p>Create your own collection of cocktails!</p>
-      <a class="btn btn-ghost" href="<%= new_cocktail_path %>">Add your cocktail!</a>
   </div>
 </div>
-
-
 
   <h1 class="title-list">My Cocktails</h1>
 
@@ -16,23 +13,25 @@
     <% @cocktails.each do |cocktail| %>
     <div class="card-product">
         <div class="card-product-infos">
-
-        <%= cl_image_tag @cocktail.photo.key, crop: :fill %>
-        <h2><%= link_to cocktail.name, cocktail_path(cocktail), :style => "text-decoration: none;" %></h2>
-          <h3>Description : </h3>
-            <p><%= cocktail.description %></p>
-          <h3>Preparation time : </h3>
-            <p><%= cocktail.prep_time %> min</p>
+          <% if @cocktail.photo != nil %>
+            <%= cl_image_tag @cocktail.photo.key, height: 300, width: 400, crop: :fill %>
+          <% end %>
+          <h2><%= link_to cocktail.name, cocktail_path(cocktail), :style => "text-decoration: none;" %></h2>
+            <h3>Category : </h3>
+              <p><%= cocktail.category.name %></p>
+            <h3>Glass : </h3>
+              <p><%= cocktail.glass.name %></p>
+            <h3>Preparation time : </h3>
+              <p><%= cocktail.prep_time %> min</p>
+            <h3>Alcoholic : </h3>
+              <p><%= cocktail.alcoholic.name %></p>
+            <h3>Description : </h3>
+              <p><%= cocktail.description %></p>
       </div>
     </div>
     <% end %>
   </div>
-            <div class="d-flex justify-content-around">
-              <a class="btn btn-ghost" href="<%= new_cocktail_path %>" role="button">Add New Cocktail</a>
-            </div>
-
 <br>
-
 <div class="d-flex justify-content-around">
   <a class="btn btn-ghost" href="<%= new_cocktail_path %>" role="button">Add New Cocktail</a>
 </div>

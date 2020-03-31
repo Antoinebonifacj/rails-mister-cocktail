@@ -1,49 +1,65 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 require 'json'
 require 'open-uri'
 
-url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list'
-drinks = JSON.load(open(url))
-ingredients = drinks['drinks']
-mint = { "strIngredient1" => "Mint" }
-ingredients << mint
+# Storing api's urls
+
+url1 = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list'
+url2 = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?g=list'
+url3 = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list'
+url4 = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?a=list'
+
+# Parsing apis urls
+categories = JSON.parse(open(url1).read)
+glasses = JSON.parse(open(url2).read)
+ingredients = JSON.parse(open(url3).read)
+alcoholics = JSON.parse(open(url4).read)
+
+puts "Creating Ingredients..."
+  # Reducing
 ing = []
-ingredients.each do |ingredient|
-  ing << ingredient.to_a.reduce
+ingredients["drinks"].each do |ingredient|
+  ing << ingredient
 end
-ing.sort!
+ing
+  # Sorting alphabetically
+  # Creating Ingredient object
 ing.each do |i|
-  Ingredient.create(name: i[1])
+  Ingredient.create(name: i["strIngredient1"])
 end
 
 
+puts "Creating Categories..."
+cat = []
+categories["drinks"].each do |category|
+  cat << category
+end
+  # Sorting alphabetically
+  # Creating category object
+cat.each do |i|
+  Category.create(name: i["strCategory"])
+end
 
 
+puts "Creating Glasses..."
+gla = []
+glasses["drinks"].each do |glass|
+  gla << glass
+end
+  # Sorting alphabetically
+  # Creating glass object
+gla.each do |i|
+  Glass.create(name: i["strGlass"])
+end
 
 
+puts "Creating Alcoholics..."
+alc = []
+alcoholics["drinks"].each do |alcoholic|
+  alc << alcoholic
+end
+  # Creating alcoholic object
+alc.each do |i|
+  Alcoholic.create(name: i["strAlcoholic"])
+end
 
-    # Ingredient.create(name: igs['strIngredient1'])
-
-
-
-
-
-
-
-
-
-
-
-
-
-# ingredients.each do |ingredient|
-#   Ingredient.create(name: ingredient['strIngredient1'])
-# end
-
-
+puts "Finish!!"

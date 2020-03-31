@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_22_144443) do
+ActiveRecord::Schema.define(version: 2020_03_30_154001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,12 +36,30 @@ ActiveRecord::Schema.define(version: 2020_02_22_144443) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "alcoholics", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "cocktails", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "description"
     t.integer "prep_time"
+    t.bigint "glass_id"
+    t.bigint "category_id"
+    t.bigint "alcoholic_id"
+    t.index ["alcoholic_id"], name: "index_cocktails_on_alcoholic_id"
+    t.index ["category_id"], name: "index_cocktails_on_category_id"
+    t.index ["glass_id"], name: "index_cocktails_on_glass_id"
   end
 
   create_table "doses", force: :cascade do |t|
@@ -54,6 +72,12 @@ ActiveRecord::Schema.define(version: 2020_02_22_144443) do
     t.index ["ingredient_id"], name: "index_doses_on_ingredient_id"
   end
 
+  create_table "glasses", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -61,6 +85,9 @@ ActiveRecord::Schema.define(version: 2020_02_22_144443) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "cocktails", "alcoholics"
+  add_foreign_key "cocktails", "categories"
+  add_foreign_key "cocktails", "glasses"
   add_foreign_key "doses", "cocktails"
   add_foreign_key "doses", "ingredients"
 end

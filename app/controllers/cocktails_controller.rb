@@ -1,4 +1,5 @@
 class CocktailsController < ApplicationController
+
   def index
     @cocktails = Cocktail.all
   end
@@ -13,7 +14,13 @@ class CocktailsController < ApplicationController
   end
 
   def create
+    @category = Category.find(params[:cocktail][:category_id])
+    @glass = Glass.find(params[:cocktail][:glass_id])
+    @alcoholic = Alcoholic.find(params[:cocktail][:alcoholic_id])
     @cocktail = Cocktail.new(cocktail_params)
+    @cocktail.category = @category
+    @cocktail.glass = @glass
+    @cocktail.alcoholic = @alcoholic
     if @cocktail.save
       redirect_to cocktail_path(@cocktail)
     else
@@ -29,6 +36,14 @@ class CocktailsController < ApplicationController
   private
 
   def cocktail_params
-    params.require(:cocktail).permit(:name, :description, :prep_time, :photo)
+    params.require(:cocktail).permit(
+      :name,
+      :description,
+      :category_id,
+      :glass_id,
+      :alcoholic,
+      :prep_time,
+      :photo
+      )
   end
 end

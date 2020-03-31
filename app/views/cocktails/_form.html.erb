@@ -3,7 +3,10 @@
     <div class="col-6">
       <%= simple_form_for(@cocktail) do |f| %>
         <%= f.input :name, label: 'Name of the Cocktail' %>
-        <%= f.input :description, label: 'Description (max 150 char)' %>
+        <%= f.input :description, label: 'Description (max 500 char)' %>
+        <%= f.association :category, collection: Category.all %>
+        <%= f.association :glass, collection: Glass.all %>
+        <%= f.association :alcoholic, collection: Alcoholic.all %>
         <%= f.input :prep_time, label: 'Préparation time (minutes)' %>
         <%= f.input :photo, as: :file %>
         <%= f.submit %>
