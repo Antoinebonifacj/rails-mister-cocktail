@@ -1,16 +1,4 @@
-# This file is auto-generated from the current state of the database. Instead
-# of editing this file, please use the migrations feature of Active Record to
-# incrementally modify your database, and then regenerate this schema definition.
-#
-# Note that this schema.rb definition is the authoritative source for your
-# database schema. If you need to create the application database on another
-# system, you should be using db:schema:load, not running all the migrations
-# from scratch. The latter is a flawed and unsustainable approach (the more migrations
-# you'll amass, the slower it'll run and the greater likelihood for issues).
-#
-# It's strongly recommended that you check this file into your version control system.
-
-ActiveRecord::Schema.define(version: 2020_03_30_154001) do
+ActiveRecord::Schema.define(version: 2020_03_31_063809) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,17 +41,18 @@ ActiveRecord::Schema.define(version: 2020_03_30_154001) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "description"
-    t.integer "prep_time"
     t.bigint "glass_id"
     t.bigint "category_id"
     t.bigint "alcoholic_id"
+    t.string "photo_url"
+    t.string "style"
     t.index ["alcoholic_id"], name: "index_cocktails_on_alcoholic_id"
     t.index ["category_id"], name: "index_cocktails_on_category_id"
     t.index ["glass_id"], name: "index_cocktails_on_glass_id"
   end
 
   create_table "doses", force: :cascade do |t|
-    t.text "description"
+    t.text "measure"
     t.bigint "cocktail_id"
     t.bigint "ingredient_id"
     t.datetime "created_at", null: false
@@ -82,6 +71,11 @@ ActiveRecord::Schema.define(version: 2020_03_30_154001) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "description"
+    t.string "sort"
+    t.string "alcohol"
+    t.integer "perc"
+    t.string "photo_url"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

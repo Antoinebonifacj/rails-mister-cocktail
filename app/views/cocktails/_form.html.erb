@@ -7,7 +7,7 @@
         <%= f.association :category, collection: Category.all %>
         <%= f.association :glass, collection: Glass.all %>
         <%= f.association :alcoholic, collection: Alcoholic.all %>
-        <%= f.input :prep_time, label: 'Préparation time (minutes)' %>
+        <%= f.input :style, label: 'style' %>
         <%= f.input :photo, as: :file %>
         <%= f.submit %>
       <% end %>

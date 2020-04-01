@@ -1,35 +1,35 @@
 <div class="banner d-flex justify-content-start">
-  <div class="container">
-      <h1>TGIF</h1>
-      <p>Thanks God It's Friday</p>
-      <p>Create your own collection of cocktails</p>
-      <a class="btn btn-ghost" href="<%= cocktails_path %>">Your cocktails</a>
-  </div>
+    <div class="container">
+        <h1>TGIF</h1>
+        <p>Thanks God It's Friday</p>
+        <p>Create your own collection of cocktails</p>
+        <a class="btn btn-ghost" href="<%= cocktails_path %>">Your cocktails</a>
+    </div>
 </div>
 <h1 class="title-list">New Ingredient</h1>
 <div class="container">
-  <div class="row">
-    <div class="col-6">
-      <%= simple_form_for [@cocktail, @dose] do |f| %>
-        <%= f.input :description, label: 'Quantity (unit)'%>
-        <%= f.input :ingredient_id, collection: Ingredient.all %>
-        <%= f.submit %>
-      <% end %>
+    <div class="row">
+        <div class="col-6">
+            <%= simple_form_for [@cocktail, @dose] do |f| %>
+                <%= f.input :measure, label: 'Quantity (unit)'%>
+                    <%= f.input :ingredient_id, collection: Ingredient.all %>
+                        <%= f.submit %>
+                            <% end %>
+        </div>
     </div>
-  </div>
 </div>
 <div class="d-flex ">
-  <a href= "<%= cocktails_path %>" class="btn btn-ghost">Back to Cocktails</a>
+    <a href="<%= cocktails_path %>" class="btn btn-ghost">Back to Cocktails</a>
 </div>
 <div class="footer fixed-bottom">
-  <div class="footer-links">
-    <a href="#"><i class="fab fa-github"></i></a>
-    <a href="#"><i class="fab fa-instagram"></i></a>
-    <a href="#"><i class="fab fa-facebook"></i></a>
-    <a href="#"><i class="fab fa-twitter"></i></a>
-    <a href="#"><i class="fab fa-linkedin"></i></a>
-  </div>
-  <div class="footer-copyright">
-    This footer is made with <i class="fas fa-heart"></i> at Le Wagon
-  </div>
+    <div class="footer-links">
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <div class="footer-copyright">
+        This footer is made with <i class="fas fa-heart"></i> at Le Wagon
+    </div>
 </div>

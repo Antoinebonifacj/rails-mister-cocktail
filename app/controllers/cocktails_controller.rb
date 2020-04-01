@@ -18,9 +18,9 @@ class CocktailsController < ApplicationController
     @glass = Glass.find(params[:cocktail][:glass_id])
     @alcoholic = Alcoholic.find(params[:cocktail][:alcoholic_id])
     @cocktail = Cocktail.new(cocktail_params)
-    @cocktail.category = @category
-    @cocktail.glass = @glass
-    @cocktail.alcoholic = @alcoholic
+    @cocktail.category_id = @category
+    @cocktail.glass_id = @glass
+    @cocktail.alcoholic_id = @alcoholic
     if @cocktail.save
       redirect_to cocktail_path(@cocktail)
     else
@@ -41,8 +41,8 @@ class CocktailsController < ApplicationController
       :description,
       :category_id,
       :glass_id,
-      :alcoholic,
-      :prep_time,
+      :alcoholic_id,
+      :style,
       :photo
       )
   end

@@ -7,8 +7,4 @@ class Cocktail < ApplicationRecord
   has_many :ingredients, through: :doses
 
   validates :name, presence: true, uniqueness: true
-  validates :description, presence: true, length: { maximum: 500 }
-  validates :category, presence: true
-  validates :glass, presence: true
-  validates :prep_time, presence: true
 end
