@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DosesController < ApplicationController
   def new
     @cocktail = Cocktail.find(params[:cocktail_id])

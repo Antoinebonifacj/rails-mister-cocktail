@@ -1,5 +1,6 @@
-class CocktailsController < ApplicationController
+# frozen_string_literal: true
 
+class CocktailsController < ApplicationController
   def index
     @cocktails = Cocktail.all
   end
@@ -44,6 +45,6 @@ class CocktailsController < ApplicationController
       :alcoholic_id,
       :style,
       :photo
-      )
+    )
   end
 end
