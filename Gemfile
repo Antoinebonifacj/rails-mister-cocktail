@@ -6,6 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.5'
 
 # Gem custom
+gem 'acts-as-taggable-on'
 gem 'actionview', '>= 5.2.4.2'
 gem 'autoprefixer-rails'
 gem 'cloudinary', '~> 1.12.0'

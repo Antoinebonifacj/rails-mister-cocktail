@@ -2,6 +2,7 @@
 
 # Core of the App
 class Cocktail < ApplicationRecord
+  include PgSearch::Model
   # Database Relations
   belongs_to :category
   belongs_to :glass
@@ -12,4 +13,15 @@ class Cocktail < ApplicationRecord
 
   # Validations
   validates :name, presence: true, uniqueness: true
+
+  # TODO: Implement the Multi-Search gem
+  pg_search_scope :global_search,
+  against: [:name, :description ],
+  associated_against: {
+    glasses: [:name],
+    categories: [:name]
+  },
+  using: {
+    tsearch: {any_word: true}
+  }
 end
