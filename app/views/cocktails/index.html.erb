@@ -8,40 +8,32 @@
   %>
   <%= submit_tag "Search", class: "btn btn-primary" %>
 <% end %>
-
-<% @cocktails.each do |cocktail| %>
-    <div class="card-product">
-        <%= image_tag cocktail.photo_url %>
-            <div class="card-product-infos">
-                <h2>
-                    <%= link_to cocktail.name, cocktail_path(cocktail), :style => "text-decoration: none;" %>
-                </h2>
-                <p><strong>Type of Drink : </strong></p>
-                <p>
-                    <%= cocktail.style %>
-                </p>
-            </div>
+<div class="grid">
+  <% @cocktails.each do |cocktail| %>
+    <div class="item">
+      <button type="button">
+      <div class="item-content" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cocktail.photo_url %>), height: 300, width: 400, crop: :fit %>">
+       <%= link_to cocktail.name, cocktail_path(cocktail.id) %>
+      </div>
     </div>
-    <% end %>
-        <br>
-        <div class="d-flex justify-content-around">
-            <a href="<%= ingredients_index_path %>" class="btn btn-ghost">See all ingredients</a>
-        </div>
-        <div class="d-flex justify-content-around">
-            <a class="btn btn-ghost" href="<%= new_cocktail_path %>" role="button">Add  New Cocktail</a>
-        </div>
-        <div class="footer fixed-bottom">
-            <div class="footer-links">
-                <a href="#"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-            </div>
-            <div class="footer-copyright">
-                This footer is made with <i class="fas fa-heart"></i> at Le Wagon
-            </div>
-        </div>
-        <div class="container">
-
-        </div>
+  <% end %>
+</div>
+<br>
+<div class="d-flex justify-content-around">
+    <a href="<%= ingredients_index_path %>" class="btn btn-ghost">See all ingredients</a>
+</div>
+<div class="d-flex justify-content-around">
+    <a class="btn btn-ghost" href="<%= new_cocktail_path %>" role="button">Add  New Cocktail</a>
+</div>
+<div class="footer fixed-bottom">
+  <div class="footer-links">
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+  </div>
+    <div class="footer-copyright">
+        This footer is made with <i class="fas fa-heart"></i> at Le Wagon
+    </div>
+</div>

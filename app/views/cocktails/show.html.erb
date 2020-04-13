@@ -1,10 +1,10 @@
 <div class="banner d-flex justify-content-start">
-    <div class="container">
-        <h1>TGIF</h1>
-        <p>Thanks God It's Friday</p>
-        <p>Create your own collection of cocktails!</p>
-        <a class="btn btn-ghost" href="<%= new_cocktail_path %>">Add your cocktail</a>
-    </div>
+  <div class="container">
+      <h1>TGIF</h1>
+      <p>Thanks God It's Friday</p>
+      <p>Create your own collection of cocktails!</p>
+      <a class="btn btn-ghost" href="<%= new_cocktail_path %>">Add your cocktail</a>
+  </div>
 </div>
 
 
@@ -15,30 +15,33 @@
 </div> -->
 
 <div class="card" style="width: 32rem;">
-    <div class="card-body">
-        <h3 class="card-title">
-            <%= @cocktail.name %>
-        </h3>
+  <div class="card-body">
+    <h3 class="card-title">
+        <%= @cocktail.name %>
+    </h3>
 
-        <ul>
-            <p class="card-text">
-                <%= image_tag @cocktail.photo_url %>
-                    <% @cocktail.doses.each do |dose| %>
-                        <div>
-                            <li class="d-flex justify-content-between" style="width: 24rem;">
-                                <%= dose.measure%> of
-                                    <%= dose.ingredient.name %>
-                                        <img src="https://www.thecocktaildb.com/images/ingredients/<%= dose.ingredient.name %>-Small.png" alt="<%= dose.ingredient.name %>">
-                                        <%= link_to "🗑️",dose_path(dose.id), method: :delete %>
-                            </li>
-                        </div>
-                        <% end %>
-            </p>
-        </ul>
-        <div class="d-flex justify-content-center">
-            <a href="<%= new_cocktail_dose_path(@cocktail) %>" class="btn btn-ghost">Add ingredient</a>
-        </div>
+    <p><strong>Category : </strong><%= @category[0].name %></p>
+    <p><strong>Type of Glass : </strong><%= @glass[0].name %></p>
+    <ul>
+      <p class="card-text">
+        <%= image_tag @cocktail.photo_url %>
+        <%= @cocktail.description %>
+        <% @cocktail.doses.each do |dose| %>
+          <div>
+            <li class="d-flex justify-content-between" style="width: 24rem;">
+              <%= dose.measure%> of
+              <%= dose.ingredient.name %>
+              <img src="https://www.thecocktaildb.com/images/ingredients/<%= dose.ingredient.name %>-Small.png" alt="<%= dose.ingredient.name %>">
+              <%= link_to "🗑️",dose_path(dose.id), method: :delete %>
+            </li>
+          </div>
+        <% end %>
+      </p>
+    </ul>
+    <div class="d-flex justify-content-center">
+        <a href="<%= new_cocktail_dose_path(@cocktail) %>" class="btn btn-ghost">Add ingredient</a>
     </div>
+  </div>
 </div>
 
 

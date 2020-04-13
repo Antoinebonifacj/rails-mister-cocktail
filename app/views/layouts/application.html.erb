@@ -2,42 +2,34 @@
 <html>
 
 <head>
-    <title>TGIF</title>
-    <%= csrf_meta_tags %>
-        <%= csp_meta_tag %>
-            <link href="https://fonts.googleapis.com/css?family=Alegreya|Alegreya+Sans|Cabin|Inconsolata|Merriweather|Merriweather+Sans|Nunito|Nunito+Sans|Pacifico|Quattrocento|Quattrocento+Sans|Quicksand|Roboto|Roboto+Mono|Roboto+Slab|Rubik|VT323&display=swap" rel="stylesheet">
-            <link rel="stylesheet" href="coin-slider-styles.css" type="text/css" />
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-
-            <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <title>TGIF</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <link href="https://fonts.googleapis.com/css?family=Alegreya|Alegreya+Sans|Cabin|Inconsolata|Merriweather|Merriweather+Sans|Nunito|Nunito+Sans|Pacifico|Quattrocento|Quattrocento+Sans|Quicksand|Roboto|Roboto+Mono|Roboto+Slab|Rubik|VT323&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag "application" %>
+  <script src="https://unpkg.com/web-animations-js@2.3.2/web-animations.min.js"></script>
+  <script src="https://unpkg.com/muuri@0.8.0/dist/muuri.min.js"></script>
 </head>
 
 <body>
-    <div class="banner d-flex justify-content-start">
-        <div class="container">
-            <h1>TGIF</h1>
-            <p>Thanks God It's Friday</p>
-            <p>Create your own collection of cocktails!</p>
-        </div>
+  <div class="banner d-flex justify-content-start">
+    <div class="container">
+        <h1>TGIF</h1>
+        <p>Thanks God It's Friday</p>
+        <p>Create your own collection of cocktails!</p>
     </div>
-    <%= yield %>
-        <p class="notice">
-            <%= notice %>
-        </p>
-        <p class="alert">
-            <%= alert %>
-        </p>
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $('#coin-slider').coinslider();
-            });
-        </script>
-        <script type="text/javascript" src="jquery-1.4.2.js"></script>
-        <script type="text/javascript" src="coin-slider.min.js"></script>
-        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-            <%= javascript_pack_tag "application" %>
+  </div>
+  <%= yield %>
+  <p class="notice">
+      <%= notice %>
+  </p>
+  <p class="alert">
+      <%= alert %>
+  </p>
 </body>
 
 </html>

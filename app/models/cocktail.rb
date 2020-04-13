@@ -15,13 +15,9 @@ class Cocktail < ApplicationRecord
   validates :name, presence: true, uniqueness: true
 
   # TODO: Implement the Multi-Search gem
-  pg_search_scope :global_search,
-  against: [:name, :description ],
-  associated_against: {
-    glasses: [:name],
-    categories: [:name]
-  },
-  using: {
-    tsearch: {any_word: true}
-  }
+  pg_search_scope :search_by_name_and_description,
+    against: [ :name, :description ],
+    using: {
+      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+    }
 end

@@ -2,20 +2,24 @@
 
 class CocktailsController < ApplicationController
   def index
-    if params["search"]
-      @filter = params["search"]["flavors"].concat(params["search"]["strengths"]).flatten.reject(&:blank?)
-      @cocktails = Cocktail.all.global_search("#{@filter}")
+   if params[:query].present?
+      sql_query = " \
+        cocktails.name ILIKE :query \
+        OR cocktails.description ILIKE :query \
+        OR categories.name ILIKE :query \
+        OR glasses.name ILIKE :query \
+      "
+      @cocktails = Cocktail.joins(:category, :glass).where(sql_query, query: "%#{params[:query]}%")
     else
       @cocktails = Cocktail.all
-    end
-    respond_to do |format|
-      format.html
-      format.js
     end
   end
 
   def show
     @cocktail = Cocktail.find(params[:id])
+    @category = Category.where(id: @cocktail.category_id)
+    @glass = Glass.where(id: @cocktail.glass_id)
+    @alcoholic = Alcoholic.where(id: @cocktail.alcoholic_id)
     # redirect_to cocktail_path(@cocktail)
   end
 
