@@ -1,1 +1,1 @@
-{"drinks"=>[{"strAlcoholic"=>"Alcoholic"}, {"strAlcoholic"=>"Non alcoholic"}, {"strAlcoholic"=>"Optional alcohol"}, {"strAlcoholic"=>nil}]}
+[{"id":1,"name":"Alcoholic","created_at":"2020-04-14T06:43:30.997Z","updated_at":"2020-04-14T06:43:30.997Z"},{"id":2,"name":"Non alcoholic","created_at":"2020-04-14T06:43:31.006Z","updated_at":"2020-04-14T06:43:31.006Z"},{"id":3,"name":"Optional alcohol","created_at":"2020-04-14T06:43:31.017Z","updated_at":"2020-04-14T06:43:31.017Z"},{"id":4,"name":null,"created_at":"2020-04-14T06:43:31.028Z","updated_at":"2020-04-14T06:43:31.028Z"}]

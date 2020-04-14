@@ -7,7 +7,7 @@
     <div class="card-product">
       <img src="https://www.thecocktaildb.com/images/ingredients/<%= ingredient.name %>.png" alt="<%= ingredient.name %>">
       <div class="card-product-infos">
-        <h2><%= link_to ingredient.name, ingredients_show_path(ingredient), :style => "text-decoration: none;" %></h2>
+        <h2><%= link_to ingredient.name.capitalize, ingredients_show_path(ingredient), :style => "text-decoration: none;" %></h2>
       </div>
     </div>
   <% end %>
