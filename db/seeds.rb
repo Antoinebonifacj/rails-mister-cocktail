@@ -111,7 +111,28 @@ end
 # puts "saving ingredients"
 #end
 
-#puts 'Creating Cocktails...'
+puts 'Creating Cocktails...'
+cocktails = JSON.parse(File.read(filepath5))
+cocktails.each do |i|
+  unless i['name'].nil?
+    Cocktail.create(
+      name: i['name'],
+      description: i['description'],
+      style: i['style'],
+      category_id: i['category_id'],
+      glass_id: i['glass_id'],
+      alcoholic_id: i['alcoholic_id'],
+      photo_url: i['photo_url']
+    )
+    puts "create #{i['name']}"
+  end
+end
+
+
+
+
+
+
 #cktls = []
 #k = 11_000
 #until k == 16_000
