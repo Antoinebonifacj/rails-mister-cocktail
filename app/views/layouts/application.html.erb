@@ -16,12 +16,20 @@
 </head>
 
 <body>
-  <div class="banner d-flex justify-content-start">
-    <div class="container">
-        <h1>TGIF</h1>
-        <p>Thanks God It's Friday</p>
-        <p>Create your own collection of cocktails!</p>
-    </div>
+  <div class="navbar navbar-light" style="background-color: #e3f2fd;"></div>
+    <!-- Navbar content -->
+    <h1>TGIF</h1>
+    <p>Thanks God It's Friday</p>
+    <p>Create your own collection of cocktails!</p>
+    <%= form_tag cocktails_path, method: :get do %>
+    <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find a Cocktail"
+    %>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+  </nav>
   </div>
   <%= yield %>
   <p class="notice">
@@ -30,6 +38,7 @@
   <p class="alert">
       <%= alert %>
   </p>
+  
 </body>
 
 </html>

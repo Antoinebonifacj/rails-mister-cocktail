@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'pry'
 require 'json'
 require 'open-uri'
@@ -21,61 +22,69 @@ require 'open-uri'
 ###
 ###
 ##
-##filepath1 = 'db/categories.json'
-##filepath2 = 'db/glasses.json'
-##filepath3 = 'db/alcoholics.json'
-#filepath4 = 'db/ingredients.json'
+filepath1 = 'db/categories.json'
+filepath2 = 'db/glasses.json'
+filepath3 = 'db/alcoholics.json'
+filepath4 = 'db/ingredients.json'
 ##
 ##
 ## Creating Category object
-#puts 'Creating Categories...'
-#cat = []
-#categories['drinks'].each do |i|
-#  catg = Category.create(name: i['strCategory'].downcase)
-#  cat << catg
-#end
+puts 'Creating Categories...'
+cat = JSON.parse(File.read(filepath1))
+cat.each do |i|
+  unless i.nil?
+    Category.create(
+      name: i['name'],
+      kname: i['name'].parameterize.underscore
+    )
+  end
+end
 #File.open('db/categories.json', 'wb') do |file|
 #  file.write(cat.to_json)
 #  puts 'saving categories...'
 #end
 #
 ## Creating Glass object
-#puts 'Creating Glasses...'
-#gla = []
-#glasses['drinks'].each do |i|
-#  glss = Glass.create(name: i['strGlass'].downcase)
-#  gla << glss
-#end
+puts 'Creating Glasses...'
+gla = JSON.parse(File.read(filepath2))
+gla.each do |i|
+  unless i.nil?
+    Glass.create(name: i['name'])
+  end
+end
 #File.open('db/glasses.json', 'wb') do |file|
 #  file.write(gla.to_json)
 #  puts 'saving glasses...'
 #end
 #
-## Creating Alcoholic object
-#puts 'Creating Alcoholics...'
-#alc = []
-#alcoholics['drinks'].each do |i|
-# alch = Alcoholic.create(name: i['strAlcoholic'])
-# alc << alch
-#end
+# Creating Alcoholic object
+puts 'Creating Alcoholics...'
+alc = JSON.parse(File.read(filepath3))
+alc.each do |i|
+  unless i.nil?
+    Alcoholic.create(name: i['name'])
+  end
+end
 #File.open('db/alcoholics.json', 'wb') do |file|
 #  file.write(alc.to_json)
 #  puts 'saving alcoholics...'
 #end
 #
-#puts 'Creating Ingredients...'
-##ingredients = JSON.parse(File.read(filepath4))
-##ingredients.each do |i|
-##  Ingredient.create(
-##    name: i['name'],
-##    description: i['description'],
-##    sort: i['sort'],
-##    alcohol: i['alcohol'],
-##    perc: i['perc'],
-##    photo_url: i['photo_url']
-##  )
-##  puts "create #{i['name']}"
-##end
+puts 'Creating Ingredients...'
+ingredients = JSON.parse(File.read(filepath4))
+ingredients.each do |i|
+  unless i['name'].nil?
+    Ingredient.create(
+      name: i['name'],
+      description: i['description'],
+      sort: i['sort'],
+      alcohol: i['alcohol'],
+      perc: i['perc'],
+      photo_url: i['photo_url']
+    )
+    puts "create #{i['name']}"
+  end
+end
 #ingrdt = []
 #i = 1
 #until i == 700
@@ -101,43 +110,60 @@ require 'open-uri'
 # puts "saving ingredients"
 #end
 
-puts 'Creating Cocktails...'
-cktls = []
-j = 1
-k = 11_000
-until k == 11_010
-  url5 = "https://thecocktaildb.com/api/json/v1/1/lookup.php?i=#{k}"
-  cocktails = JSON.parse(open(url5).read)
-  unless cocktails['drinks'].nil?
-    coc = Cocktail.create(
-      name: cocktails['drinks'][0]['strDrink'].downcase!,
-      description: cocktails['drinks'][0]['strInstructions'],
-      style: cocktails['drinks'][0]['strCategory'].downcase,
-      category_id: Category.where(name: cocktails['drinks'][0]['strCategory']).first.id,
-      glass_id: Glass.where(name: cocktails['drinks'][0]['strGlass']).first.id,
-      alcoholic_id: Alcoholic.where(name: cocktails['drinks'][0]['strAlcoholic']).first.id,
-      photo_url: cocktails['drinks'][0]['strDrinkThumb']
-    )
-    cktls << coc
-    puts "create #{cocktails['drinks'][0]['strDrink']}"
-    measure = cocktails['drinks'][0]["strMeasure#{j}"]
-    ing = cocktails['drinks'][0]["strIngredient#{j}"]
-    ingd = Ingredient.where(name: ing.downcase)
-    unless j == 15 && ing.nil?
-      dose = Dose.new(
-        measure: measure,
-        cocktail_id: coc.id,
-        ingredient_id: ingd[0].id
-      )
-      dose.save(validate: false)
-      puts "Creating Doses of #{ing}..."
-      j += 1
-    end
-  end
-  k += 1
-end
+#puts 'Creating Cocktails...'
+#cktls = []
+#k = 11_000
+#until k == 16_000
+#  url5 = "https://thecocktaildb.com/api/json/v1/1/lookup.php?i=#{k}"
+#  cocktails = JSON.parse(open(url5).read)
+#  cockt = cocktails['drinks']
+#  unless cockt.nil?
+#    coc = Cocktail.create(
+#      name: cockt[0]['strDrink'].downcase!,
+#      description: cockt[0]['strInstructions'],
+#      style: cockt[0]['strCategory'].downcase,
+#      category_id: Category.find_by(kname: cockt[0]['strCategory'].parameterize.underscore).id,
+#      glass_id: Glass.find_by(name: cockt[0]['strGlass'].downcase).id,
+#      alcoholic_id: Alcoholic.find_by(name: cockt[0]['strAlcoholic']).id,
+#      photo_url: cockt[0]['strDrinkThumb']
+#    )
+#    cktls << coc
+#  end
+#  k += 1
+#end
+  #cktls.each do |cocktail|
+  #  j = 1
+  #  until j == 15
+  #    unless cocktail.nil? && cockt[0]["strMeasure#{j}"].nil? 
+  #      puts "create dose of #{cockt[0]["strIngredient#{j}"]}"
+  #      binding.pry
+  #      Dose.create(
+  #        measure: cockt[0]["strMeasure#{j}"],
+  #        cocktail_id: cocktail.id,
+  #        ingredient_id: Ingredient.find_by(kname: cockt[0]["strIngredient#{j}"].parameterize.underscore).id
+  #      )
+  #    end
+  #  end
+  #end
 
-File.open('db/cocktails.json', 'wb') do |file|
-  file.write(cktls.to_json)
-end
-puts 'Finish!!'
+#  puts "create #{cockt[0]['strDrink']}"
+#  measure = cockt[0]["strMeasure#{j}"]
+#  ing = cockt[0]["strIngredient#{j}"]
+#  ingd = Ingredient.where(kname: ing.parameterize.underscore)
+#  unless measure.nil?
+#    dose = Dose.new(
+#      measure: measure,
+#      cocktail_id: coc.id,
+#      ingredient_id: ingd[0].id
+#    )
+#    dose.save(validate: false)
+#  end
+#  puts "Creating Doses of #{ing}..."
+#  j += 1
+#end
+  
+#  File.open('db/cocktails.json', 'wb') do |file|
+#  file.write(cktls.to_json)
+#  puts "saving cocktails..."
+#  end
+#puts 'Finish!!'

@@ -2,24 +2,27 @@
 
 class CocktailsController < ApplicationController
   def index
-   if params[:query].present?
-      sql_query = " \
-        cocktails.name ILIKE :query \
-        OR cocktails.description ILIKE :query \
-        OR categories.name ILIKE :query \
-        OR glasses.name ILIKE :query \
-      "
-      @cocktails = Cocktail.joins(:category, :glass).where(sql_query, query: "%#{params[:query]}%")
-    else
-      @cocktails = Cocktail.all
-    end
+  @cocktails = Cocktail.all
+  @categories = Category.all
+  @glasses = Glass.all
+  if params[:query].present?
+     sql_query = " \
+       @cocktails.name ILIKE :query \
+       OR @cocktails.description ILIKE :query \
+       OR @categories.name ILIKE :query \
+       OR @glasses.name ILIKE :query \
+     "
+     @cocktails = Cocktail.joins(:category, :glass).where(sql_query, query: "%#{params[:query]}%")
+   else
+     @cocktails = Cocktail.all
+  end
   end
 
   def show
-    @cocktail = Cocktail.find(params[:id])
-    @category = Category.where(id: @cocktail.category_id)
-    @glass = Glass.where(id: @cocktail.glass_id)
-    @alcoholic = Alcoholic.where(id: @cocktail.alcoholic_id)
+    @cocktail = Cocktail.joins(:category, :glass, :alcoholic).find(params[:id])
+    # @category = Category.where(id: @cocktail.category_id)
+    # @glass = Glass.where(id: @cocktail.glass_id)
+    # @alcoholic = Alcoholic.where(id: @cocktail.alcoholic_id)
     # redirect_to cocktail_path(@cocktail)
   end
 
@@ -28,13 +31,7 @@ class CocktailsController < ApplicationController
   end
 
   def create
-    @category = Category.find(params[:cocktail][:category_id])
-    @glass = Glass.find(params[:cocktail][:glass_id])
-    @alcoholic = Alcoholic.find(params[:cocktail][:alcoholic_id])
     @cocktail = Cocktail.new(cocktail_params)
-    @cocktail.category_id = @category
-    @cocktail.glass_id = @glass
-    @cocktail.alcoholic_id = @alcoholic
     if @cocktail.save
       redirect_to cocktail_path(@cocktail)
     else
@@ -43,8 +40,8 @@ class CocktailsController < ApplicationController
   end
 
   def destroy
-    @cocktail = Cocktail.find(params[:id])
-    @cocktail.destroy
+    cocktail = Cocktail.find(params[:id])
+    cocktail.destroy
   end
 
   private

@@ -20,11 +20,13 @@
         <%= @cocktail.name %>
     </h3>
 
-    <p><strong>Category : </strong><%= @category[0].name %></p>
-    <p><strong>Type of Glass : </strong><%= @glass[0].name %></p>
+    <p><strong>Category : </strong><%= @cocktail.category.name.capitalize %></p>
+    <p><strong>Type of Glass : </strong><%= @cocktail.glass.name.capitalize %></p>
     <ul>
       <p class="card-text">
+      <% if @cocktail.photo_url %>
         <%= image_tag @cocktail.photo_url %>
+      <% end %>
         <%= @cocktail.description %>
         <% @cocktail.doses.each do |dose| %>
           <div>

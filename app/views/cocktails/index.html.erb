@@ -1,20 +1,11 @@
 <h1 class="title-list">My Cocktails</h1>
 
-<%= form_tag cocktails_path, method: :get do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Find a Cocktail"
-  %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
-<div class="grid">
+
+<div class="row">
   <% @cocktails.each do |cocktail| %>
-    <div class="item">
-      <button type="button">
-      <div class="item-content" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cocktail.photo_url %>), height: 300, width: 400, crop: :fit %>">
-       <%= link_to cocktail.name, cocktail_path(cocktail.id) %>
-      </div>
+    <div class="col-6 col-md-3">
+     <img src="<%= cocktail.photo_url %>" class="img-fluid" alt="Responsive image" "> 
+      <%= link_to cocktail.name, cocktail_path(cocktail.id) %>
     </div>
   <% end %>
 </div>

@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-6">
-      <%= simple_form_for(@cocktail) do |f| %>
+       <%= simple_form_for(@cocktail) do |f| %>
         <%= f.input :name, label: 'Name of the Cocktail' %>
         <%= f.input :description, label: 'Description (max 500 char)' %>
         <%= f.association :category, collection: Category.all %>
