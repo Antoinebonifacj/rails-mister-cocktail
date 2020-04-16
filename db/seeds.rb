@@ -115,48 +115,49 @@ ingredients.each do |i|
   end
 end
 
-puts 'Scrapping Cocktails...'
+#puts 'Scrapping Cocktails...'
+#
+#cktls = []
+#k = 11_000
+#until k == 16_000
+#  url5 = "https://thecocktaildb.com/api/json/#v1/1/lookup.php?i=#{k}"
+#  cocktailss = JSON.parse(open(url5).read)
+#  cockt = cocktailss['drinks']
+#  if !cockt.nil? && !cockt[0].nil?
+#    coc = {
+#      name: cockt[0]['strDrink'].downcase,
+#      description: cockt[0]['strInstructions'],
+#      style: cockt[0]['strCategory'].downcase,
+#      category_id: Category.find_by(kname: #cockt[0]['strCategory'].parameterize.#underscore).id,
+#      glass_id: Glass.find_by(name: cockt[0]#['strGlass'].downcase).id,
+#      alcoholic_id: Alcoholic.find_by(name: #cockt[0]['strAlcoholic']).id,
+#      photo_url: cockt[0]['strDrinkThumb'],
+#      kname: cockt[0]['strDrink'].parameterize.#underscore,
+#      measure1: cockt[0]["strMeasure1"],
+#      measure2: cockt[0]["strMeasure2"],
+#      measure3: cockt[0]["strMeasure3"],
+#      measure4: cockt[0]["strMeasure4"],
+#      measure5: cockt[0]["strMeasure5"],
+#      measure6: cockt[0]["strMeasure6"]
+#    }
+#    m = 1
+#    if m <= 6 && !cockt[0]["strIngredient#{m}"]#.nil?
+#      coc["ingredient#{m}"] = Ingredient.#find_by(kname: cockt[0]["strIngredient##{m}"].parameterize.underscore).kname
+#      m += 1
+#    end
+#    cktls << coc
+#    puts "scrap #{cockt[0]['strDrink']}"
+#  end
+#  k += 1
+#end
+#
+#File.open('db/cocktails.json', 'wb') do |file|
+#  file.write(cktls.to_json)
+#  puts 'saving cocktails...'
+#end
 
-cktls = []
-k = 11_000
-until k == 16_000
-  url5 = "https://thecocktaildb.com/api/json/v1/1/lookup.php?i=#{k}"
-  cocktailss = JSON.parse(open(url5).read)
-  cockt = cocktailss['drinks']
-  if !cockt.nil? && !cockt[0].nil?
-    coc = {
-      name: cockt[0]['strDrink'].downcase,
-      description: cockt[0]['strInstructions'],
-      style: cockt[0]['strCategory'].downcase,
-      category_id: Category.find_by(kname: cockt[0]['strCategory'].parameterize.underscore).id,
-      glass_id: Glass.find_by(name: cockt[0]['strGlass'].downcase).id,
-      alcoholic_id: Alcoholic.find_by(name: cockt[0]['strAlcoholic']).id,
-      photo_url: cockt[0]['strDrinkThumb'],
-      kname: cockt[0]['strDrink'].parameterize.underscore,
-      measure1: cockt[0]["strMeasure1"],
-      measure2: cockt[0]["strMeasure2"],
-      measure3: cockt[0]["strMeasure3"],
-      measure4: cockt[0]["strMeasure4"],
-      measure5: cockt[0]["strMeasure5"],
-      measure6: cockt[0]["strMeasure6"]
-    }
-    m = 1
-    if m <= 6 && !cockt[0]["strIngredient#{m}"].nil?
-      coc["ingredient#{m}"] = Ingredient.find_by(kname: cockt[0]["strIngredient#{m}"].parameterize.underscore).kname
-      m += 1
-    end
-    cktls << coc
-    puts "scrap #{cockt[0]['strDrink']}"
-  end
-  k += 1
-end
+#puts 'Scrapping done...'
 
-File.open('db/cocktails.json', 'wb') do |file|
-  file.write(cktls.to_json)
-  puts 'saving cocktails...'
-end
-
-puts 'Scrapping done...'
 puts 'Creating Cocktails..'
 cocktails = JSON.parse(File.read(filepath5))
 cocktails.each do |i|
@@ -187,26 +188,26 @@ cocktails.each do |i|
   end
 end
 puts "Cocktail's creation done"
-puts 'Scrapping Doses...'
+#puts 'Scrapping Doses...'
+#
+#ds = []
+#cocktails.each do |i|
+#  m = 1
+#  if m <= 6 && !i["ingredient#{m}"].nil?
+#    dose = {
+#      measure: i["measure#{m}"],
+#      cocktail_id: Cocktail.find_by(kname: i#['kname']).id,
+#      ingredient_id: Ingredient.find_by(kname: #i["ingredient#{m}"]).id
+#    }
+#    m += 1
+#    ds << dose
+#  end
+#end
 
-ds = []
-cocktails.each do |i|
-  m = 1
-  if m <= 6 && !i["ingredient#{m}"].nil?
-    dose = {
-      measure: i["measure#{m}"],
-      cocktail_id: Cocktail.find_by(kname: i['kname']).id,
-      ingredient_id: Ingredient.find_by(kname: i["ingredient#{m}"]).id
-    }
-    m += 1
-    ds << dose
-  end
-end
-
-File.open('db/doses.json', 'wb') do |file|
-  file.write(ds.to_json)
-  puts "saving doses..."
-end
+#File.open('db/doses.json', 'wb') do |file|
+#  file.write(ds.to_json)
+#  puts "saving doses..."
+#end
 
 puts 'creating doses...'
 doses = JSON.parse(File.read(filepath6))
