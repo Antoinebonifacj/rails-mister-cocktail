@@ -116,11 +116,11 @@ ingredients.each do |i|
 end
 
 #puts 'Scrapping Cocktails...'
-#
+
 #cktls = []
 #k = 11_000
-#until k == 16_000
-#  url5 = "https://thecocktaildb.com/api/json/#v1/1/lookup.php?i=#{k}"
+#until k == 17_000
+#  url5 = "https://thecocktaildb.com/api/json/v1/1/lookup.php?i=#{k}"
 #  cocktailss = JSON.parse(open(url5).read)
 #  cockt = cocktailss['drinks']
 #  if !cockt.nil? && !cockt[0].nil?
@@ -128,11 +128,17 @@ end
 #      name: cockt[0]['strDrink'].downcase,
 #      description: cockt[0]['strInstructions'],
 #      style: cockt[0]['strCategory'].downcase,
-#      category_id: Category.find_by(kname: #cockt[0]['strCategory'].parameterize.#underscore).id,
-#      glass_id: Glass.find_by(name: cockt[0]#['strGlass'].downcase).id,
-#      alcoholic_id: Alcoholic.find_by(name: #cockt[0]['strAlcoholic']).id,
+#      category_id: Category.find_by(kname: cockt[0]['strCategory'].parameterize.underscore).id,
+#      glass_id: Glass.find_by(name: cockt[0]['strGlass'].downcase).id,
+#      alcoholic_id: Alcoholic.find_by(name: cockt[0]['strAlcoholic']).id,
 #      photo_url: cockt[0]['strDrinkThumb'],
-#      kname: cockt[0]['strDrink'].parameterize.#underscore,
+#      kname: cockt[0]['strDrink'].parameterize.underscore,
+#      ingredient1: cockt[0]["strIngredient1"],
+#      ingredient2: cockt[0]['strIngredient2'],
+#      ingredient3: cockt[0]['strIngredient3'],
+#      ingredient4: cockt[0]['strIngredient4'],
+#      ingredient5: cockt[0]['strIngredient5'],
+#      ingredient6: cockt[0]['strIngredient6'],
 #      measure1: cockt[0]["strMeasure1"],
 #      measure2: cockt[0]["strMeasure2"],
 #      measure3: cockt[0]["strMeasure3"],
@@ -140,17 +146,12 @@ end
 #      measure5: cockt[0]["strMeasure5"],
 #      measure6: cockt[0]["strMeasure6"]
 #    }
-#    m = 1
-#    if m <= 6 && !cockt[0]["strIngredient#{m}"]#.nil?
-#      coc["ingredient#{m}"] = Ingredient.#find_by(kname: cockt[0]["strIngredient##{m}"].parameterize.underscore).kname
-#      m += 1
-#    end
 #    cktls << coc
 #    puts "scrap #{cockt[0]['strDrink']}"
 #  end
 #  k += 1
 #end
-#
+
 #File.open('db/cocktails.json', 'wb') do |file|
 #  file.write(cktls.to_json)
 #  puts 'saving cocktails...'
@@ -188,26 +189,37 @@ cocktails.each do |i|
   end
 end
 puts "Cocktail's creation done"
-#puts 'Scrapping Doses...'
-#
-#ds = []
-#cocktails.each do |i|
-#  m = 1
-#  if m <= 6 && !i["ingredient#{m}"].nil?
-#    dose = {
-#      measure: i["measure#{m}"],
-#      cocktail_id: Cocktail.find_by(kname: i#['kname']).id,
-#      ingredient_id: Ingredient.find_by(kname: #i["ingredient#{m}"]).id
-#    }
-#    m += 1
-#    ds << dose
-#  end
-#end
+puts 'Scrapping Doses...'
 
-#File.open('db/doses.json', 'wb') do |file|
-#  file.write(ds.to_json)
-#  puts "saving doses..."
-#end
+ds = []
+cocktails.each do |i|
+  m = 1
+  until m == 6 || !i["ingredient#{m}"] || i["ingredient#{m}"] == 'Carrot' || i["ingredient#{m}"] == 'Jägermeister'
+    if i["measure#{m}"]
+      dose = {
+        measure: i["measure#{m}"],
+        cocktail_id: Cocktail.find_by(kname: i['kname']).id,
+        ingredient_id: Ingredient.find_by(name: i["ingredient#{m}"].downcase).id
+      }
+      puts "Scrapping #{i["ingredient#{m}"]}"
+      ds << dose
+    else
+      dose = {
+        measure: "the rest with plenty ",
+        cocktail_id: Cocktail.find_by(kname: i['kname']).id,
+        ingredient_id: Ingredient.find_by(name: i["ingredient#{m}"].downcase).id
+      }
+      puts "Scrapping #{i["ingredient#{m}"]}"
+      ds << dose
+    end
+    m += 1
+  end
+end
+
+File.open('db/doses.json', 'wb') do |file|
+  file.write(ds.to_json)
+  puts "saving doses..."
+end
 
 puts 'creating doses...'
 doses = JSON.parse(File.read(filepath6))
