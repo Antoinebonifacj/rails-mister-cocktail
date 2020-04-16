@@ -1,6 +1,17 @@
-<h1 class="title-list">My Cocktails</h1>
-
-
+<h1>My Cocktails</h1>
+<br>
+<br>
+<%= form_tag cocktails_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find a Cocktail"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+<br>
+<br>
+<br>
 <div class="row">
   <% @cocktails.each do |cocktail| %>
     <div class="col-6 col-md-3">
@@ -16,12 +27,12 @@
 <div class="d-flex justify-content-around">
     <a class="btn btn-ghost" href="<%= new_cocktail_path %>" role="button">Add  New Cocktail</a>
 </div>
-/br
-/br
-/br
-/br
-/br
-/br
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
 <div class="footer fixed-bottom">
   <div class="footer-links">
     <a href="#"><i class="fab fa-github"></i></a>

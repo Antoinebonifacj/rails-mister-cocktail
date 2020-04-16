@@ -18,6 +18,7 @@ gem 'faker'
 gem 'font-awesome-sass', '~> 5.6.1'
 gem 'pg_search'
 gem 'pry-byebug'
+gem 'rails_admin', '~> 2.0'
 gem 'simple_form'
 gem 'solargraph', group: :development
 
