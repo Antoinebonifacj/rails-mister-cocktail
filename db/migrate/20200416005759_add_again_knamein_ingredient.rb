@@ -1,4 +1,4 @@
-class AddKnameToIngredient < ActiveRecord::Migration[5.2]
+class AddAgainKnameinIngredient < ActiveRecord::Migration[5.2]
   def self.up
     #Code to migrate 
     add_column :ingredients, :kname, :string
