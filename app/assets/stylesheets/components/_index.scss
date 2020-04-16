@@ -1,19 +1,17 @@
 // Import your components CSS files here.
 @import "alert";
 //@import "avatars";
-@import "navbar";
-@import "banner";
 @import "button";
 @import "card";
 @import "footer";
-@import "title";
+@import "navbar";
+@import "searchbar";
 
 
 body {
-  background-image: url('https://images.pexels.com/photos/1939485/pexels-photo-1939485.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
-  background-size: cover;
-  background-position: center;
+  background: white;
   color: $light-gray;
+  margin-bottom: 10px;
 }
 
 body a {
