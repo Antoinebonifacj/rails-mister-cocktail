@@ -1,0 +1,9 @@
+<div class="container">
+    <div class="cards">
+        <% @cocktails_lime.each do |i| %>
+            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= i.photo_url %>)">
+                <%= i.name.capitalize %>
+            </div>
+        <% end %>
+    </div>      
+</div>

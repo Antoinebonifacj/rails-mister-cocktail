@@ -19,6 +19,8 @@ gem 'font-awesome-sass', '~> 5.6.1'
 gem 'pg_search'
 gem 'pry-byebug'
 gem 'simple_form'
+gem 'solargraph', group: :development
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.1'

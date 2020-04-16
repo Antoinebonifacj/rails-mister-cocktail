@@ -5,8 +5,7 @@
   <title>TGIF</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-  <link href="https://fonts.googleapis.com/css?family=Alegreya|Alegreya+Sans|Cabin|Inconsolata|Merriweather|Merriweather+Sans|Nunito|Nunito+Sans|Pacifico|Quattrocento|Quattrocento+Sans|Quicksand|Roboto|Roboto+Mono|Roboto+Slab|Rubik|VT323&display=swap" rel="stylesheet">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -16,21 +15,7 @@
 </head>
 
 <body>
-  <div class="navbar navbar-light" style="background-color: #e3f2fd;"></div>
-    <!-- Navbar content -->
-    <h1>TGIF</h1>
-    <p>Thanks God It's Friday</p>
-    <p>Create your own collection of cocktails!</p>
-    <%= form_tag cocktails_path, method: :get do %>
-    <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Find a Cocktail"
-    %>
-    <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
-  </nav>
-  </div>
+  <%= render 'shared/navbar' %>
   <%= yield %>
   <p class="notice">
       <%= notice %>

@@ -6,21 +6,3 @@
 @import "footer";
 @import "navbar";
 @import "searchbar";
-
-
-body {
-  background: white;
-  color: $light-gray;
-  margin-bottom: 10px;
-}
-
-body a {
-  color: $light-gray;
-  text-decoration: none;
-  background-color: transparent;
-}
-
-.bottom {
-  margin-bottom: 5rem;
-}
-
