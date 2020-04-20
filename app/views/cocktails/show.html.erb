@@ -1,64 +1,32 @@
-<div class="banner d-flex justify-content-start">
-  <div class="container">
-      <h1>TGIF</h1>
-      <p>Thanks God It's Friday</p>
-      <p>Create your own collection of cocktails!</p>
-      <a class="btn btn-ghost" href="<%= new_cocktail_path %>">Add your cocktail</a>
-  </div>
+<%= image_tag "#{@cocktail.photo_url}" %>
+<h1><%= @cocktail.name.capitalize %></h1>
+<p><strong>Category : </strong><%= @cocktail.style.capitalize %>
+<p><strong>Glass : </strong><%= @cocktail.glass.name.capitalize %>
+<p><strong>Alcoholic type : </strong><%= @cocktail.alcoholic.name.capitalize %>
+<p><strong>Description : </strong><%= @cocktail.description %>
+
+<h2>Ingredients</h2>
+</br>
+<% @cocktail.doses.each do |d| %>
+<p><%= d.ingredient.name.capitalize %></p>
+<p>Quantity : <%= d.measure %> </p>
+<% end %>
+<h2>
+  <%= pluralize @cocktail.reviews.size, "review" %>
+</h2>
+<div id="reviews">
+  <% if @cocktail.reviews.blank? %>
+    Be the first to leave a review for <%= @cocktail.name.capitalize %>
+    <%= render 'reviews/form' %>
+  <% else %>
+    <% @cocktail.reviews.each do |review| %>
+      <p><%= review.content %></p>
+    <% end %>
+    <%= render 'reviews/form' %>
+  <% end %>
 </div>
-
-
-<!-- <div class="banner fixed-top">
-  <div class="container d-flex justify-content-center">
-    <p class="description d-flex">Create your own collection of cocktails!</p>
-  </div>
-</div> -->
-
-<div class="card" style="width: 32rem;">
-  <div class="card-body">
-    <h3 class="card-title">
-        <%= @cocktail.name %>
-    </h3>
-
-    <p><strong>Category : </strong><%= @cocktail.category.name.capitalize %></p>
-    <p><strong>Type of Glass : </strong><%= @cocktail.glass.name.capitalize %></p>
-    <ul>
-      <p class="card-text">
-      <% if @cocktail.photo_url %>
-        <%= image_tag @cocktail.photo_url %>
-      <% end %>
-        <%= @cocktail.description %>
-        <% @cocktail.doses.each do |dose| %>
-          <div>
-            <li class="d-flex justify-content-between" style="width: 24rem;">
-              <%= dose.measure%> of
-              <%= dose.ingredient.name %>
-              <img src="https://www.thecocktaildb.com/images/ingredients/<%= dose.ingredient.name %>-Small.png" alt="<%= dose.ingredient.name %>">
-              <%= link_to "🗑️",dose_path(dose.id), method: :delete %>
-            </li>
-          </div>
-        <% end %>
-      </p>
-    </ul>
-    <div class="d-flex justify-content-center">
-        <a href="<%= new_cocktail_dose_path(@cocktail) %>" class="btn btn-ghost">Add ingredient</a>
-    </div>
-  </div>
-</div>
-
 
 <div class="d-flex justify-content-around">
-    <a class="btn btn-ghost bottom" href="<%= cocktails_path %>">Your cocktails</a>
+    <a class="btn btn-ghost bottom" href="<%= cocktails_path %>">All cocktails</a>
 </div>
-<div class="footer fixed-bottom">
-    <div class="footer-links">
-        <a href="#"><i class="fab fa-github"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-linkedin"></i></a>
-    </div>
-    <div class="footer-copyright">
-        This footer is made with <i class="fas fa-heart"></i> at Le Wagon
-    </div>
-</div>
+

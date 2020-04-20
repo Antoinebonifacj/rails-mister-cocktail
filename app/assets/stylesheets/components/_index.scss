@@ -1,8 +1,22 @@
 // Import your components CSS files here.
 @import "alert";
-//@import "avatars";
+@import "avatars";
 @import "button";
 @import "card";
 @import "footer";
+@import "home_page_cards";
+@import "modal";
 @import "navbar";
 @import "searchbar";
+
+body {
+margin-top: 10vh;
+margin-bottom: 10vh;
+font-family: "Roboto Condensed", "sans-serif";
+font-size: 1rem;
+font-weight: 400;
+line-height: 1.5;
+text-align: center;
+background-color: #ffffff;
+color: black;
+}
