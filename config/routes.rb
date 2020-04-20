@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'ingredient/:id', to: 'ingredients#show', as: 'ingredient'
   # Create a cocktail and doses into the cocktail
     resources 'cocktails', only: %i[index show new create] do
+      resources 'reviews', only: :create
       resources 'doses', only: %i[new create]
     end
   # Cocktails routes

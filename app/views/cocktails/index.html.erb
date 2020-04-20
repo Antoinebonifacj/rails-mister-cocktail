@@ -1,3 +1,4 @@
+
 <h1>My Cocktails</h1>
 <br>
 <br>
@@ -7,17 +8,25 @@
     class: "form-control",
     placeholder: "Find a Cocktail"
   %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
+  <%= submit_tag "Search", class: "btn btn-ghost" %>
 <% end %>
 <br>
 <br>
 <br>
 <div class="row">
   <% @cocktails.each do |cocktail| %>
-    <div class="col-6 col-md-3">
-     <img src="<%= cocktail.photo_url %>" class="img-fluid" alt="Responsive image" "> 
-      <%= link_to cocktail.name, cocktail_path(cocktail.id) %>
+  <a href="<%= cocktail_path(cocktail) %>" role="button">
+    <div class="col-6 col-md-4">
+      <div class="card">
+        <img src="<%= cocktail.photo_url %>" class="card-img-top" alt="...">
+        <div class="card-body">
+        <p class="card-text"><%= cocktail.name %></p>
+        <p class="card-text">Category: <%= cocktail.style.capitalize %></p>
+        <p class="card-text">Glass: <%= cocktail.glass.name.capitalize %></p>
+        </div>
+      </div>
     </div>
+  </a>
   <% end %>
 </div>
 <br>
@@ -27,21 +36,6 @@
 <div class="d-flex justify-content-around">
     <a class="btn btn-ghost" href="<%= new_cocktail_path %>" role="button">Add  New Cocktail</a>
 </div>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-<div class="footer fixed-bottom">
-  <div class="footer-links">
-    <a href="#"><i class="fab fa-github"></i></a>
-    <a href="#"><i class="fab fa-instagram"></i></a>
-    <a href="#"><i class="fab fa-facebook"></i></a>
-    <a href="#"><i class="fab fa-twitter"></i></a>
-    <a href="#"><i class="fab fa-linkedin"></i></a>
-  </div>
-    <div class="footer-copyright">
-        This footer is made with <i class="fas fa-heart"></i> at Le Wagon
-    </div>
-</div>
+
+
+

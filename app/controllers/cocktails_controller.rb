@@ -12,12 +12,13 @@ class CocktailsController < ApplicationController
       "
       @cocktails = Cocktail.joins(:category, :glass, :alcoholic).where(sql_query, query: "%#{params[:query]}%")
     else
-     @cocktails = Cocktail.includes(:dose)
+     @cocktails = Cocktail.includes(:glass, :category, :alcoholic)
     end
   end
 
   def show
     @cocktail = Cocktail.find(params[:id])
+    @review = Review.new
 
     # redirect_to cocktail_path(@cocktail)
   end
