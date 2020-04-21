@@ -1,4 +1,4 @@
-<%= image_tag "#{@cocktail.photo_url}" %>
+<%= image_tag "#{@cocktail.photo_url}", :class => "showimage" %>
 <h1><%= @cocktail.name.capitalize %></h1>
 <p><strong>Category : </strong><%= @cocktail.style.capitalize %>
 <p><strong>Glass : </strong><%= @cocktail.glass.name.capitalize %>

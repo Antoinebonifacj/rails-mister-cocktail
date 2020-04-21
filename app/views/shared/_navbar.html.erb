@@ -1,14 +1,29 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top">
-  <% unless current_user %>
-    <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag("Logo_Mister-Cocktails_Long.png") %>
-    <% end %>
-  <% else %>
-    <%= link_to dashboard_path, class: "navbar-brand" do %>
-      <%= image_tag("Logo_Mister-Cocktails_Long.png") %>
-    <% end %>
-  <% end %>
 
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top">
+  <div>
+    <% unless current_user %>
+      <%= link_to root_path, class: "navbar-brand" do %>
+        <%= image_tag("Logo_Mister-Cocktails_Long.png", class: "nav-img") %>
+      <% end %>
+    <% else %>
+      <%= link_to dashboard_path do %>
+        <%= image_tag("Logo_Mister-Cocktails_Long.png", class: "nav-img") %>
+      <% end %>
+    <% end %>
+  </div>
+  <div>
+    <nav class="navbar navbar-light bg-light">
+    <%= form_tag cocktails_path, method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find a Cocktail"
+      %>
+      <%= submit_tag "Search", class: "btn btn-ghost" %>
+    <% end %>
+    </nav>
+  </div>
+  <div>
     <ul class="navbar-nav">
       <li class="nav-item active">
         <a href="<%= cocktails_path %>" class="nav-link">Cocktails</a>
@@ -37,4 +52,5 @@
         </li>
       <% end %>
     </ul>
+  </div>
 </div>
