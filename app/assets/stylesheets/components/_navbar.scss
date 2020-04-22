@@ -1,15 +1,43 @@
 .navbar-lewagon {
+  border: 1px red solid;
   justify-content: space-between;
   background: white;
   height: 10vh;
 }
 
+.navbar {
+  border: 1px red solid;
+}
+
+.navbar-nav {
+  flex-direction: inherit;
+}
+
+.navbar-itemleft {
+  border: 1px red solid;
+  display: flex;
+  justify-content: space-between;
+  height: auto;
+  width: 50%;
+}
+.navbar-itemright {
+  border: 1px red solid;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  width: 50%;
+}
+
+.nav-link {
+  padding: 0;
+}
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
 
 .navbar-lewagon .navbar-brand .nav-img {
-  height: 10vh;
+  width: 11vw;
 }
 .navbar-nav .dropdown-menu {
   background-color: grey;

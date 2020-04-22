@@ -1,32 +1,30 @@
+<div class="container-fluid">
+  <h1>My Cocktails</h1>
 
-<h1>My Cocktails</h1>
-
-<br>
-<br>
-<br>
-<div class="row">
-  <% @cocktails.each do |cocktail| %>
-  <a href="<%= cocktail_path(cocktail) %>" role="button">
-    <div class="col-6 col-md-4">
-      <div class="card">
-        <img src="<%= cocktail.photo_url %>" class="card-img-top" alt="...">
-        <div class="card-body">
-        <p class="card-text"><%= cocktail.name %></p>
-        <p class="card-text">Category: <%= cocktail.style.capitalize %></p>
-        <p class="card-text">Glass: <%= cocktail.glass.name.capitalize %></p>
+  <br>
+  <br>
+  <br>
+  <div class="row">
+    <% @cocktails.each do |cocktail| %>
+    <a href="<%= cocktail_path(cocktail) %>" role="button" class="col-6 col-md-4 col-ld-3">
+        <div class="card">
+          <img src="<%= cocktail.photo_url %>" class="card-img-top" alt="...">
+          <div class="card-body">
+          <h5 class="card-text"><%= cocktail.name.capitalize %></h5>
+          <p class="card-text"><strong>Category:</strong> <%= cocktail.style.capitalize %></p>
+          <p class="card-text">   <strong>Glass:</strong> <%= cocktail.glass.name.capitalize %></p>
+          </div>
         </div>
-      </div>
-    </div>
-  </a>
-  <% end %>
+    </a>
+    <% end %>
+  </div>
+  <br>
+  <div class="d-flex justify-content-around">
+      <a href="<%= ingredients_path %>" class="btn btn-ghost">See all ingredients</a>
+  </div>
+  <div class="d-flex justify-content-around">
+      <a class="btn btn-ghost" href="<%= new_cocktail_path %>" role="button">Add  New Cocktail</a>
+  </div>
 </div>
-<br>
-<div class="d-flex justify-content-around">
-    <a href="<%= ingredients_path %>" class="btn btn-ghost">See all ingredients</a>
-</div>
-<div class="d-flex justify-content-around">
-    <a class="btn btn-ghost" href="<%= new_cocktail_path %>" role="button">Add  New Cocktail</a>
-</div>
-
 
 

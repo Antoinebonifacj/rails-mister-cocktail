@@ -1,32 +1,50 @@
-<%= image_tag "#{@cocktail.photo_url}", :class => "showimage" %>
-<h1><%= @cocktail.name.capitalize %></h1>
-<p><strong>Category : </strong><%= @cocktail.style.capitalize %>
-<p><strong>Glass : </strong><%= @cocktail.glass.name.capitalize %>
-<p><strong>Alcoholic type : </strong><%= @cocktail.alcoholic.name.capitalize %>
-<p><strong>Description : </strong><%= @cocktail.description %>
+<div class="container-fluid">
+  <%= image_tag "#{@cocktail.photo_url}", :class => "showimage" %>
+  <h1><%= @cocktail.name.capitalize %></h1>
+  <div class="show-info">
+    <div class="show-info-item">
+    <p><strong>Category : </strong><%= @cocktail.style.capitalize %>
+    </div>
+    <div class="show-info-item">
+    <p><strong>Glass : </strong><%= @cocktail.glass.name.capitalize %>
+    </div>
+    <div class="show-info-item">
+    <p><strong>Alcoholic type : </strong><%= @cocktail.alcoholic.name.capitalize %>
+    </div>
+  </div>
+  <div>
+    <div>
+      <h3>Description : </h3> 
+      </br>
+      <p><%= @cocktail.description %></p>
+    </div>
+    <div>
+      <h3>Ingredients</h3>
+      </br>
+      <% @cocktail.doses.each do |d| %>
+      <p><%= d.ingredient.name.capitalize %></p>
+      <p>Quantity : <%= d.measure %> </p>
+      <% end %>
+      <h3>
+        <%= pluralize @cocktail.reviews.size, "review" %>
+      </h3>
+    </div>
+  </div>
 
-<h2>Ingredients</h2>
-</br>
-<% @cocktail.doses.each do |d| %>
-<p><%= d.ingredient.name.capitalize %></p>
-<p>Quantity : <%= d.measure %> </p>
-<% end %>
-<h2>
-  <%= pluralize @cocktail.reviews.size, "review" %>
-</h2>
-<div id="reviews">
-  <% if @cocktail.reviews.blank? %>
-    Be the first to leave a review for <%= @cocktail.name.capitalize %>
-    <%= render 'reviews/form' %>
-  <% else %>
-    <% @cocktail.reviews.each do |review| %>
-      <p><%= review.content %></p>
+  <div id="reviews">
+    <% if @cocktail.reviews.blank? %>
+      Be the first to leave a review for <%= @cocktail.name.capitalize %>
+      <%= render 'reviews/form' %>
+    <% else %>
+      <% @cocktail.reviews.each do |review| %>
+        <p><%= review.content %></p>
+      <% end %>
+      <%= render 'reviews/form' %>
     <% end %>
-    <%= render 'reviews/form' %>
-  <% end %>
-</div>
+  </div>
 
-<div class="d-flex justify-content-around">
-    <a class="btn btn-ghost bottom" href="<%= cocktails_path %>">All cocktails</a>
+  <div class="d-flex justify-content-around">
+      <a class="btn btn-ghost bottom" href="<%= cocktails_path %>">All cocktails</a>
+  </div>
 </div>
 
