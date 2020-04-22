@@ -189,37 +189,37 @@ cocktails.each do |i|
   end
 end
 puts "Cocktail's creation done"
-puts 'Scrapping Doses...'
-
-ds = []
-cocktails.each do |i|
-  m = 1
-  until m == 6 || !i["ingredient#{m}"] || i["ingredient#{m}"] == 'Carrot' || i["ingredient#{m}"] == 'Jägermeister'
-    if i["measure#{m}"]
-      dose = {
-        measure: i["measure#{m}"],
-        cocktail_id: Cocktail.find_by(kname: i['kname']).id,
-        ingredient_id: Ingredient.find_by(name: i["ingredient#{m}"].downcase).id
-      }
-      puts "Scrapping #{i["ingredient#{m}"]}"
-      ds << dose
-    else
-      dose = {
-        measure: "the rest with plenty ",
-        cocktail_id: Cocktail.find_by(kname: i['kname']).id,
-        ingredient_id: Ingredient.find_by(name: i["ingredient#{m}"].downcase).id
-      }
-      puts "Scrapping #{i["ingredient#{m}"]}"
-      ds << dose
-    end
-    m += 1
-  end
-end
-
-File.open('db/doses.json', 'wb') do |file|
-  file.write(ds.to_json)
-  puts "saving doses..."
-end
+#puts 'Scrapping Doses...'
+#
+#ds = []
+#cocktails.each do |i|
+#  m = 1
+#  until m == 6 || !i["ingredient#{m}"] || i["ingredient#{m}"] == 'Carrot' || i["ingredient#{m}"] == 'Jägermeister'
+#    if i["measure#{m}"]
+#      dose = {
+#        measure: i["measure#{m}"],
+#        cocktail_id: Cocktail.find_by(kname: i['kname']).id,
+#        ingredient_id: Ingredient.find_by(name: i["ingredient#{m}"].downcase).id
+#      }
+#      puts "Scrapping #{i["ingredient#{m}"]}"
+#      ds << dose
+#    else
+#      dose = {
+#        measure: "the rest with plenty ",
+#        cocktail_id: Cocktail.find_by(kname: i['kname']).id,
+#        ingredient_id: Ingredient.find_by(name: i["ingredient#{m}"].downcase).id
+#      }
+#      puts "Scrapping #{i["ingredient#{m}"]}"
+#      ds << dose
+#    end
+#    m += 1
+#  end
+#end
+#
+#File.open('db/doses.json', 'wb') do |file|
+#  file.write(ds.to_json)
+#  puts "saving doses..."
+#end
 
 puts 'creating doses...'
 doses = JSON.parse(File.read(filepath6))
