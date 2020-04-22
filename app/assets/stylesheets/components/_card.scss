@@ -19,6 +19,15 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
+.card-body {
+  color: black;
+  font-family: inherit;
+}
+
+.showimage {
+  width: 100%;
+  height: 25vh;
+}
 
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
@@ -54,3 +63,4 @@
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
+

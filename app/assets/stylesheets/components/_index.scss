@@ -8,15 +8,27 @@
 @import "modal";
 @import "navbar";
 @import "searchbar";
+@import "show";
 
 body {
 margin-top: 10vh;
 margin-bottom: 10vh;
 font-family: "Roboto Condensed", "sans-serif";
-font-size: 1rem;
-font-weight: 400;
-line-height: 1.5;
-text-align: center;
 background-color: #ffffff;
 color: black;
+    h1 {
+        text-align: center;
+    }
+}
+
+form {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 20vw;
+}
+
+.form-control {
+    height: 3vh;
+    width: 60%;
 }

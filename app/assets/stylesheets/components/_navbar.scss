@@ -1,16 +1,70 @@
 .navbar-lewagon {
+  border: 1px red solid;
   justify-content: space-between;
   background: white;
-  width: 100%;
   height: 10vh;
 }
-  
+
+.navbar {
+  border: 1px red solid;
+}
+
+.navbar-nav {
+  flex-direction: inherit;
+}
+
+.navbar-itemleft {
+  border: 1px red solid;
+  display: flex;
+  justify-content: space-between;
+  height: auto;
+  width: 50%;
+}
+.navbar-itemright {
+  border: 1px red solid;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  width: 50%;
+}
+
+.nav-link {
+  padding: 0;
+}
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
-  
-.navbar-lewagon .navbar-brand img {
-  height: 8vh;
-  margin-left: 18px;
+
+.navbar-lewagon .navbar-brand .nav-img {
+  width: 11vw;
 }
+.navbar-nav .dropdown-menu {
+  background-color: grey;
+  opacity: 0,8;
+  border: 1px solid rgba(44, 63, 47, .5);
+  position: absolute;
+}
+
+.dropdown-menu{
+  background-color: none;
+  color: $cocktailor;
+  border: 0px;
+  text-align: right;
+  margin-right: 8px;
+}
+.dropdown-item{
+  padding-right: 12px;
+  color: $cocktailor;
+  background: white;
+  border-bottom: 1px solid rgba(44, 63, 47, .5);
+  &:hover{
+    color: $cocktailor;
+    font-weight: bolder;
+  }
+  a {
+    padding-right: 12px;
+  }
+}
+
   
