@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container">
   <%= image_tag "#{@cocktail.photo_url}", :class => "showimage" %>
   <h1><%= @cocktail.name.capitalize %></h1>
   <div class="show-info">
@@ -12,26 +12,26 @@
     <p><strong>Alcoholic type : </strong><%= @cocktail.alcoholic.name.capitalize %>
     </div>
   </div>
-  <div>
-    <div>
-      <h3>Description : </h3> 
+  <div class="show-desc">
+    <div class="show-desc-item">
+      <h4>Description</h4> 
       </br>
       <p><%= @cocktail.description %></p>
     </div>
-    <div>
-      <h3>Ingredients</h3>
+    <div class="show-desc-item">
+      <h4>Ingredients</h4>
       </br>
       <% @cocktail.doses.each do |d| %>
-      <p><%= d.ingredient.name.capitalize %></p>
-      <p>Quantity : <%= d.measure %> </p>
+      <p><strong>Ingredient : </strong><%= d.ingredient.name.capitalize %></p>
+      <p><strong>Quantity : </strong><%= d.measure %> </p>
       <% end %>
-      <h3>
-        <%= pluralize @cocktail.reviews.size, "review" %>
-      </h3>
     </div>
   </div>
 
   <div id="reviews">
+      <h4>
+        <%= pluralize @cocktail.reviews.size, "review" %>
+      </h4>
     <% if @cocktail.reviews.blank? %>
       Be the first to leave a review for <%= @cocktail.name.capitalize %>
       <%= render 'reviews/form' %>

@@ -4,7 +4,16 @@
     font-weight: normal;
     opacity: 0.4;
 }
+.showimage {
+    height: 300px;
+}
 
 .show-desc {
+    display: flex;
+    justify-content: space-between;
+}
 
+.show-desc-item {
+    max-width: 40%;
+    text-align: justify;
 }

@@ -15,9 +15,15 @@
         </div>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="query" placeholder="search" aria-label="Search">
-      <button class="btn btn-ghost my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+    <form class="form-inline">
+      <%= form_tag cocktails_path, method: :get do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Find a Cocktail"
+          %>
+          <%= submit_tag "Search", class: "btn-ghost" %>
+        <% end %>
     </form>
   </div>
 </nav>

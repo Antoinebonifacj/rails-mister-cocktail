@@ -1,11 +1,7 @@
-<div class="container"></div>
-<br>
-<br>
-<br>
-<br>
+<div class="container">
   <div class="row">
     <% @cocktails_lime.each do |i| %>
-      <a href="<%= cocktail_path(i) %>" role="button" class="col-6 col-md-4 col-xl-2">
+      <a href="<%= cocktail_path(i) %>" role="button" class="col-6 col-md-3">
         <div class="card">
           <img src="<%= i.photo_url %>" class="card-img-top" alt="...">
           <div class="card-body">
@@ -17,4 +13,5 @@
       </a>
     <% end %>
   </div>
+</div>
 

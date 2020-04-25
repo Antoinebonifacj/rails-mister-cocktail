@@ -9,21 +9,20 @@
 @import "searchbar";
 @import "show";
 
-
-form {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 20vw;
+#new_cocktail {
+  width: 70%;
+  align-items: center;
 }
-
+body {
+  background-color: white;
+}
 .container {
   text-align: center;
 }
 
 .form-control {
     height: 3vh;
-    width: 60%;
+    width: 100%;
 }
 
 .container-fluid {
