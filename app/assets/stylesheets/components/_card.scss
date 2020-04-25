@@ -4,6 +4,10 @@
   grid-gap: 16px;
 }
 
+.card {
+  width: 70%;
+}
+
 .card-category {
   background-size: cover;
   background-position: center;
@@ -22,6 +26,13 @@
 .card-body {
   color: black;
   font-family: inherit;
+  text-align: -webkit-auto;
+}
+
+.card-body img {
+  vertical-align: middle;
+  border-style: none;
+  margin-left: 28vw;
 }
 
 .showimage {

@@ -1,13 +1,14 @@
-
-<h1 class="title-list">Ingredients</h1>
+<div class="container mt-5">
+  <h1 class="title-list">Ingredients</h1>
   <div class="d-flex justify-content-around">
-<a class="btn btn-ghost bottom" href="<%= cocktails_path %>">All cocktails</a>
-</div>
+    <a class="btn btn-ghost bottom" href="<%= cocktails_path %>">All cocktails</a>
+  </div>
   <% @ingredients.each do |ingredient| %>
     <div class="card-product">
       <img src="https://www.thecocktaildb.com/images/ingredients/<%= ingredient.name %>.png" alt="<%= ingredient.name %>">
       <div class="card-product-infos">
-        <h2><%= link_to ingredient.name.capitalize, ingredients_show_path(ingredient), :style => "text-decoration: none;" %></h2>
+        <h2><%= link_to ingredient.name.capitalize, ingredient_path(ingredient), :style => "text-decoration: none;" %></h2>
       </div>
     </div>
   <% end %>
+</div>

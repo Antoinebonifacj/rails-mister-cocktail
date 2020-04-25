@@ -5,21 +5,10 @@
 @import "card";
 @import "footer";
 @import "home_page_cards";
-@import "modal";
 @import "navbar";
 @import "searchbar";
 @import "show";
 
-body {
-margin-top: 10vh;
-margin-bottom: 10vh;
-font-family: "Roboto Condensed", "sans-serif";
-background-color: #ffffff;
-color: black;
-    h1 {
-        text-align: center;
-    }
-}
 
 form {
     display: flex;
@@ -28,7 +17,16 @@ form {
     width: 20vw;
 }
 
+.container {
+  text-align: center;
+}
+
 .form-control {
     height: 3vh;
     width: 60%;
+}
+
+.container-fluid {
+  margin-top: 25vh;
+  max-height: 25vh;
 }

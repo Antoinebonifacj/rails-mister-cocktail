@@ -1,11 +1,20 @@
-<div class="container">
+<div class="container"></div>
+<br>
+<br>
+<br>
+<br>
+  <div class="row">
+    <% @cocktails_lime.each do |i| %>
+      <a href="<%= cocktail_path(i) %>" role="button" class="col-6 col-md-4 col-xl-2">
+        <div class="card">
+          <img src="<%= i.photo_url %>" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-text"><%= i.name.capitalize %></h5>
+            <p class="card-text"><strong>Category:</strong> <%= i.style.capitalize %></p>
+            <p class="card-text">   <strong>Glass:</strong> <%= i.glass.name.capitalize %></p>
+          </div>
+        </div>
+      </a>
+    <% end %>
+  </div>
 
-
-    <div class="cards">
-        <% @cocktails_lime.each do |i| %>
-            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= i.photo_url %>)">
-                <%= i.name.capitalize %>
-            </div>
-        <% end %>
-    </div>      
-</div>

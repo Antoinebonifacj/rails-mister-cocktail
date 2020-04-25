@@ -1,66 +1,23 @@
-<div class="container">
-  <div class="navbar-light navbar-lewagon d-flex fixed-top">
-    <div class="navbar-itemleft">
-      <div class="navbar-item">
-        <% unless current_user %>
-          <%= link_to root_path, class: "navbar-brand" do %>
-            <%= image_tag("Logo_Mister-Cocktails_Long.png", class: "nav-img") %>
-          <% end %>
-        <% else %>
-          <%= link_to dashboard_path do %>
-            <%= image_tag("Logo_Mister-Cocktails_Long.png", class: "nav-img") %>
-          <% end %>
-        <% end %>
-      </div>
-      <div class="navbar-item" style="
-      align-items: center;
-      display: flex;">
-
-        <%= form_tag cocktails_path, method: :get do %>
-          <%= text_field_tag :query,
-            params[:query],
-            class: "form-control",
-            placeholder: "Find a Cocktail"
-          %>
-          <%= submit_tag "Search", class: "btn btn-ghost" %>
-        <% end %>
-      </div>
-    </div>
-    <div class="navbar-itemright navbar-nav">
-      <div>
-        <li class="nav-item active">
-          <a href="<%= cocktails_path %>" class="nav-link">Cocktails</a>
-        </li>
-      </div>
-      <div>
-        <li class="nav-item">
-          <%= link_to "Add your Cocktail", "cocktails/new", class: "nav-link" %>
-        </li>
-      </div>
-      <div>
-        <li class="nav-item">
-          <%= link_to "", "cocktails/new", class: "nav-link" %>
-        </li>
-      </div>
-      <div>
-        <% if user_signed_in? %>
-          <li class="nav-item dropdown">
-            <% if current_user.avatar.attached? %>
-              <%= cl_image_tag current_user.avatar.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <% else %>
-              <%= image_tag "default_avatar.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <% end %>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-              <%= link_to "Edit Profile", edit_user_registration_path, class: "dropdown-item" %>
-            </div>
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          </li>
-        <% end %>
-      </div>
-    </div>
+<nav class="navbar navbar-expand-xl navbar-light bg-light">
+  <%= link_to root_path, class: "navbar-brand" do %>
+    <%= image_tag("Logo_Mister-Cocktails_Long.png", alt: '', style: 'height: 60px; width: auto;')%>
+  <% end %>
+  <div id="navbarSupportedContent" style="display: contents;">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Menu
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="<%= cocktails_path %>">See all cocktail</a>
+          <a class="dropdown-item" href="<%= ingredients_path %>">See all ingredients</a>
+          <a class="dropdown-item" href="<%= new_cocktail_path %>">Add your cocktail</a>
+        </div>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="query" placeholder="search" aria-label="Search">
+      <button class="btn btn-ghost my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+    </form>
   </div>
-</div>
+</nav>

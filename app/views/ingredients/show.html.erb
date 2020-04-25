@@ -1,25 +1,32 @@
-<h1 class="title-list">
-    <%= @ingredient.name %>
-</h1>
-<div class="card" style="width: 32rem;">
+<div class="container">
+  <h1>
+      <%= @ingredient.name.capitalize %>
+  </h1>
+  <div class="card">
     <div class="card-body">
-        <img src="https://www.thecocktaildb.com/images/ingredients/<%= @ingredient.name %>.png" alt="<%= @ingredient.name %>">
-        <h2 class="card-title">Description</h2>
-        <p class="card-text">
-            <%= @ingredient.description %>
-        </p>
-        <h3>Type</h3>
-        <p class="card-text">
-            <%= @ingredient.sort %>
-        </p>
-        <h3>Alcohol</h3>
-        <p class="card-text">
-            <%= @ingredient.alcohol %>
-        </p>
-        <p class="card-text">
-            <%= @ingredient.perc %> %</p>
+      <img src="https://www.thecocktaildb.com/images/ingredients/<%= @ingredient.name %>.png" alt="<%= @ingredient.name %>" class="img-fluid">
+      <h2 class="card-title">Description</h2>
+      <p class="card-text">
+          <%= @ingredient.description %>
+      </p>
+
+      <h3>Type</h3>
+
+      <p class="card-text">
+          <%= @ingredient.sort %>
+      </p>
+
+      <h3>Alcohol</h3>
+
+      <p class="card-text">
+          <%= @ingredient.alcohol %>
+      </p>
+      <p class="card-text">
+          <%= @ingredient.perc %> %
+      </p>
     </div>
-</div>
-<div class="d-flex justify-content-around">
-    <a class="btn btn-ghost bottom" href="<%= ingredients_index_path %>">All ingredients</a>
+  </div>
+  <div class="d-flex justify-content-around">
+      <a class="btn btn-ghost bottom" href="<%= ingredients_path %>">All ingredients</a>
+  </div>
 </div>
