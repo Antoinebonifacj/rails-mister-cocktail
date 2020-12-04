@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_25_172834) do
+ActiveRecord::Schema.define(version: 2020_12_04_015909) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,7 +59,6 @@ ActiveRecord::Schema.define(version: 2020_04_25_172834) do
     t.bigint "alcoholic_id"
     t.string "photo_url"
     t.string "style"
-    t.string "kname"
     t.string "ingredient1"
     t.string "ingredient2"
     t.string "ingredient3"
@@ -72,6 +71,7 @@ ActiveRecord::Schema.define(version: 2020_04_25_172834) do
     t.string "measure4"
     t.string "measure5"
     t.string "measure6"
+    t.string "kname"
     t.index ["alcoholic_id"], name: "index_cocktails_on_alcoholic_id"
     t.index ["category_id"], name: "index_cocktails_on_category_id"
     t.index ["glass_id"], name: "index_cocktails_on_glass_id"
